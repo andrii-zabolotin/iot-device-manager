@@ -8,7 +8,7 @@ services:
     volumes:
       - ./src:/app/src
     command: >
-      sh -c "while ! nc -z db 5432; do sleep 1; done"
+      sh -c "while ! nc -z db 5432; do sleep 1; done; cd src; python main.py"
     environment:
       - DB_HOST=db
       - DB_NAME=devdb
