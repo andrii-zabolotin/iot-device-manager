@@ -22,5 +22,7 @@ RUN /app/.venv/bin/pip install --upgrade pip && \
         --no-create-home \
         iot-user
 
-ENV PATH="/app/.venv/bin:$PATH"
+ENV PATH="/app/.venv/bin:$PATH" \
+    PYTHONPATH=/app
+
 USER iot-user
