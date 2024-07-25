@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "iot-device-manager"
+version = "0.1.0"
+description = ""
+authors = ["Andrii Zabolotin <fenics7511@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+psycopg2 = "^2.9.9"
+peewee = "^3.17.6"
+aiohttp = "^3.9.5"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.1"
+pytest-asyncio = "^0.23.8"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
