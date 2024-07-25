@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Type
 
-from peewee import Database
+from peewee import Database, DoesNotExist
 
 from src.models import BaseModel
 
@@ -57,5 +57,9 @@ class PeeweeRepository(IRepository):
 
     def delete(self, id: int) -> None:
         with self._db:
+            object = self._model.get_or_none(self._model.id == id)
+            if not object:
+                raise DoesNotExist
+
             query = self._model.delete().where(self._model.id == id)
             query.execute()
