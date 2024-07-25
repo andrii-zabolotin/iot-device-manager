@@ -7,9 +7,9 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-psycopg2 = "^2.9.9"
 peewee = "^3.17.6"
 aiohttp = "^3.9.5"
+psycopg2-binary = "^2.9.9"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.1"
