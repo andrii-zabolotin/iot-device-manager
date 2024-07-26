@@ -1,4 +1,4 @@
-from models import User, Location, Device
+from src.models import User, Location, Device
 from src.api.device import *
 from src.api.location import *
 from src.api.user import *

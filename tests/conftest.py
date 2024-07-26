@@ -1,7 +1,4 @@
-from unittest.mock import MagicMock
-
 import pytest
-
 from src.database import db
 from src.models import Device, User, Location
 
