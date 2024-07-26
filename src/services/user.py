@@ -1,6 +1,6 @@
 from peewee import Database
 
-from src.repositories.UserRepository import UserRepository
+from src.repositories.user import UserRepository
 from src.services.IService import IService
 
 

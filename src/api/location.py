@@ -2,7 +2,7 @@ from aiohttp import web
 from peewee import DoesNotExist
 
 from src.database import db
-from src.services.LocationService import LocationService
+from src.services.location import LocationService
 
 
 async def create_location(request):

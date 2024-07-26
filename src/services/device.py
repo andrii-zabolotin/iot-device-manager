@@ -1,6 +1,6 @@
 from peewee import Database
 
-from src.repositories.DeviceRepository import DeviceRepository
+from src.repositories.device import DeviceRepository
 from src.services.IService import IService
 
 

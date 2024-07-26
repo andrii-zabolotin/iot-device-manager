@@ -2,7 +2,7 @@ from aiohttp import web
 from peewee import DoesNotExist
 
 from src.database import db
-from src.services.DeviceService import DeviceService
+from src.services.device import DeviceService
 
 
 async def create_device(request):

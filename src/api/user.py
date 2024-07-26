@@ -2,7 +2,7 @@ from aiohttp import web
 from peewee import DoesNotExist
 
 from src.database import db
-from src.services.UserService import UserService
+from src.services.user import UserService
 
 
 async def create_user(request):

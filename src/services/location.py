@@ -1,6 +1,6 @@
 from peewee import Database
 
-from src.repositories.LocationRepository import LocationRepository
+from src.repositories.location import LocationRepository
 from src.services.IService import IService
 
 
