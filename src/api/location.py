@@ -17,8 +17,9 @@ async def list_location(request):
 
 async def get_location(request):
     id = int(request.match_info['id'])
-    location = LocationService().get(id=id, db=db)
-    if not location:
+    try:
+        location = LocationService().get(id=id, db=db)
+    except DoesNotExist:
         return web.json_response({'error': 'Location with the specified id was not found'}, status=404)
 
     return web.json_response(location.__data__)

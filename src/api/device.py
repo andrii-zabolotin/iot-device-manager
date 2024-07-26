@@ -17,8 +17,9 @@ async def list_device(request):
 
 async def get_device(request):
     id = int(request.match_info['id'])
-    device = DeviceService().get(id=id, db=db)
-    if not device:
+    try:
+        device = DeviceService().get(id=id, db=db)
+    except DoesNotExist:
         return web.json_response({'error': 'Device with the specified id was not found'}, status=404)
 
     return web.json_response(device.__data__)

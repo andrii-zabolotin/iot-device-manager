@@ -17,8 +17,9 @@ async def list_user(request):
 
 async def get_user(request):
     id = int(request.match_info['id'])
-    user = UserService().get(id=id, db=db)
-    if not user:
+    try:
+        user = UserService().get(id=id, db=db)
+    except DoesNotExist:
         return web.json_response({'error': 'User with the specified id was not found'}, status=404)
 
     return web.json_response(user.__data__)
