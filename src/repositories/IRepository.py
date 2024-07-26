@@ -39,7 +39,11 @@ class PeeweeRepository(IRepository):
 
     def get(self, id: int):
         with self._db:
-            return self._model.get_or_none(self._model.id == id)
+            obj = self._model.get_or_none(self._model.id == id)
+            if not obj:
+                raise DoesNotExist
+
+            return obj
 
     def list(self):
         with self._db:
@@ -51,14 +55,18 @@ class PeeweeRepository(IRepository):
 
     def update(self, id: int, data: dict):
         with self._db:
+            obj = self._model.get_or_none(self._model.id == id)
+            if not obj:
+                raise DoesNotExist
+
             query = self._model.update(**data).where(self._model.id == id)
             query.execute()
             return self._model.get_by_id(id)
 
     def delete(self, id: int) -> None:
         with self._db:
-            object = self._model.get_or_none(self._model.id == id)
-            if not object:
+            obj = self._model.get_or_none(self._model.id == id)
+            if not obj:
                 raise DoesNotExist
 
             query = self._model.delete().where(self._model.id == id)
