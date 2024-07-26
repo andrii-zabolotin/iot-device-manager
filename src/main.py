@@ -1,9 +1,26 @@
+import logging
+
 from src.models import User, Location, Device
 from src.api.device import *
 from src.api.location import *
 from src.api.user import *
 
+# logger configuration
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
+file_handler = logging.FileHandler('app.log')
+file_handler.setLevel(logging.INFO)
+logger.addHandler(file_handler)
+
+console_handler = logging.StreamHandler()
+console_handler.setLevel(logging.INFO)
+logger.addHandler(console_handler)
+
+# create a new aiohttp web application instance.
 app = web.Application()
+
+# set up the HTTP routes
 app.router.add_post('/user/create', create_user)
 app.router.add_get('/user/list', list_user)
 app.router.add_get('/user/{id}', get_user)
@@ -24,10 +41,13 @@ app.router.add_delete('/location/{id}', delete_location)
 
 
 def create_db_tables():
+    """
+    Creates the database tables for the User, Location, and Device models.
+    """
     with db:
         db.create_tables([User, Location, Device], safe=True)
 
 
 if __name__ == '__main__':
     create_db_tables()
-    web.run_app(app, port=8000)
+    web.run_app(app, port=8000, access_log_format='%a %t "%r" %s "%{Referer}i" "%{User-Agent}i"')
