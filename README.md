@@ -27,6 +27,8 @@ docker-compose -f docker-compose.test.yml up
 ```
 
 ## API Documentation
+
+---
 ### User
 #### Create User
 - **Method**: POST
@@ -72,7 +74,7 @@ docker-compose -f docker-compose.test.yml up
 - **Description**: Deletes a user by their ID.
 - **Path Parameters**:
   - **id**: The ID of the user to be deleted.
-
+---
 ### Device
 #### Create Device
 - **Method**: POST
@@ -120,6 +122,7 @@ docker-compose -f docker-compose.test.yml up
 - **Path Parameters**:
   - **id**: The ID of the device to be deleted (integer).
 - **Request body**: No request body required.
+---
 ### Location
 #### Create Location
 - **Method**: POST
@@ -162,6 +165,8 @@ docker-compose -f docker-compose.test.yml up
 - **Path Parameters**:
   - **id**: The ID of the location to delete.
 - **Request body**: No request body required.
+
+---
 
 ### Built with
 <ul>
